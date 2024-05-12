@@ -4,6 +4,10 @@ const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
 const Typography = React.lazy(() => import('./views/theme/typography/Typography'))
 
+//Teacher
+const List = React.lazy(() => import('./views/teacher/list/List'))
+const AddTeacher = React.lazy(() => import('./views/teacher/addTeacher/AddTeacher'))
+
 // Base
 const Accordion = React.lazy(() => import('./views/base/accordion/Accordion'))
 const Breadcrumbs = React.lazy(() => import('./views/base/breadcrumbs/Breadcrumbs'))
@@ -95,6 +99,9 @@ const routes = [
   { path: '/notifications/modals', name: 'Modals', element: Modals },
   { path: '/notifications/toasts', name: 'Toasts', element: Toasts },
   { path: '/widgets', name: 'Widgets', element: Widgets },
+  { path: '/teacher', name: 'Teacher', element: List, exact: true },
+  { path: '/teacher/list', name: 'List', element: List, exact: true },
+  { path: '/teacher/add-teacher', name: 'Add Teacher', element: AddTeacher, exact: true },
 ]
 
 export default routes
