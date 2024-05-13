@@ -40,7 +40,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'List',
-        to: '/teacher/list',
+        to: '/teacher/list-teacher',
       },
       {
         component: CNavItem,
@@ -57,13 +57,13 @@ const _nav = [
     items: [
       {
         component: CNavItem,
-        name: 'List',
-        to: '/class/list',
+        name: 'List Class',
+        to: '/class/list-class',
       },
       {
         component: CNavItem,
         name: 'Add Class',
-        to: '/class/add-teacher',
+        to: '/class/add-class',
       },
     ],
   },

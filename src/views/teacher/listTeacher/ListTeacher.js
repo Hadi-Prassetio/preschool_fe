@@ -50,7 +50,7 @@ ThemeColor.propTypes = {
   className: PropTypes.string,
 }
 
-const List = () => {
+const ListTeacher = () => {
   const [teacher, setTeacher] = useState()
   useEffect(() => {
     const teacher = async () => {
@@ -103,4 +103,4 @@ const List = () => {
   )
 }
 
-export default List
+export default ListTeacher
