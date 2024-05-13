@@ -57,6 +57,7 @@ const List = () => {
       try {
         const response = await API.get("/teachers");
         setTeacher(response.data.data);
+        console.log(response)
       } catch (error) {
         console.log(error);
       }
@@ -86,7 +87,7 @@ const List = () => {
                             <td>{item?.fullname}</td>
                             <td>{item?.email}</td>
                             <td>{item?.phone}</td>
-                            <td>{item?.subject}</td>
+                            <td>{item?.class?.name}</td>
                             <td className="text-center"> {/* Menempatkan tombol aksi di tengah */}
                               <div className="d-flex justify-content-center">
                                 <button type="button" className="btn btn-outline-success px-3 mx-1">Edit</button> {/* Memberikan padding */}
