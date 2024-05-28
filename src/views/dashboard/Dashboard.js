@@ -23,39 +23,43 @@ const Dashboard = () => {
 
   useEffect(() => {
     const featchAllData = async () => {
-      const [
-        teacherResponse,
-        classesResponse,
-        enrollmentWaiting,
-        enrollmentAcc,
-        enrollmentCancel,
-        visitorWaiting,
-        visitorAcc,
-        visitorCancel,
-      ] = await Promise.all([
-        API.get('/teachers'),
-        API.get('/classes'),
-        API.get('/enrollment-wait'),
-        API.get('/enrollment-accept'),
-        API.get('/enrollment-cancel'),
-        API.get('/visitor-wait'),
-        API.get('/visitor-accept'),
-        API.get('/visitor-cancel'),
-      ])
-      setTeacher(teacherResponse?.data?.data)
-      setClasses(classesResponse?.data?.data)
-      setEnrollment({
-        All: '',
-        Waiting: enrollmentWaiting?.data?.data,
-        Accepted: enrollmentAcc?.data?.data,
-        Canceled: enrollmentCancel?.data?.data,
-      })
-      setVisitor({
-        All: '',
-        Waiting: visitorWaiting?.data?.data,
-        Accepted: visitorAcc?.data?.data,
-        Canceled: visitorCancel?.data?.data,
-      })
+      try {
+        const [
+          teacherResponse,
+          classesResponse,
+          enrollmentWaiting,
+          enrollmentAcc,
+          enrollmentCancel,
+          visitorWaiting,
+          visitorAcc,
+          visitorCancel,
+        ] = await Promise.all([
+          API.get('/teachers'),
+          API.get('/classes'),
+          API.get('/enrollment-wait'),
+          API.get('/enrollment-accept'),
+          API.get('/enrollment-cancel'),
+          API.get('/visitor-wait'),
+          API.get('/visitor-accept'),
+          API.get('/visitor-cancel'),
+        ])
+        setTeacher(teacherResponse?.data?.data)
+        setClasses(classesResponse?.data?.data)
+        setEnrollment({
+          All: '',
+          Waiting: enrollmentWaiting?.data?.data,
+          Accepted: enrollmentAcc?.data?.data,
+          Canceled: enrollmentCancel?.data?.data,
+        })
+        setVisitor({
+          All: '',
+          Waiting: visitorWaiting?.data?.data,
+          Accepted: visitorAcc?.data?.data,
+          Canceled: visitorCancel?.data?.data,
+        })
+      } catch (error) {
+        console.log(error)
+      }
     }
     featchAllData()
   }, [])
@@ -77,7 +81,7 @@ const Dashboard = () => {
             value={teacher?.length}
             title="Teacher"
             inverse
-            progress={{ value: 75 }}
+            progress={{ value: 100 }}
           />
         </CCol>
         <CCol xs={12} sm={6} xl={6} xxl={6}>
@@ -87,7 +91,7 @@ const Dashboard = () => {
             value={classes?.length}
             title="Class"
             inverse
-            progress={{ value: 75 }}
+            progress={{ value: 100 }}
           />
         </CCol>
         {Object.keys(enrollment).map((key) => (
